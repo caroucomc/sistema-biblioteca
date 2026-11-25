@@ -38,7 +38,7 @@ ORDER BY e.data_retirada;
 SELECT
     u.id,
     u.nome AS usuario,
-    SUM(e.valor_multa) AS total_multas
+    COALESCE(SUM(e.valor_multa), 0) AS total_multas
 FROM usuario u
 LEFT JOIN emprestimo e
     ON u.id = e.usuario_id
